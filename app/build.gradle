@@ -1,0 +1,123 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+ext {
+    lottieVersion = '3.2.2'
+}
+
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Cicerone library
+    implementation 'ru.terrakok.cicerone:cicerone:5.1.0'
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    // Apache String utils
+    implementation 'org.apache.commons:commons-lang3:3.9'
+
+    // HttpRequest and converters
+    // This is used for logging (Log) the responses of the WebServices
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.0'
+    // These are HTTP clients
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.3.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    // This is for receiving plain text from the WebServices
+    implementation 'com.squareup.retrofit2:converter-scalars:2.7.1'
+    // This is a JSON to Object parser, and it can be used with Retrofit ♥
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    // This is for using Observable with Retrofit, so we don't have to worry about threading
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.7.1'
+    // This is the plain JSON to object Parser
+    implementation 'com.google.code.gson:gson:2.8.6'
+    // This the RXJava specific for Android
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.facebook.fresco:fresco:2.0.0'
+    // PDF
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
+
+    implementation 'dev.turingcomplete:kotlin-onetimepassword:2.0.1'
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+
+    // Lotie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+    implementation 'com.google.firebase:firebase-core:17.4.4'
+    implementation 'com.google.firebase:firebase-messaging:20.2.3'
+
+    // Recommended: Add the Firebase SDK for Google Analytics.
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
+
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
+
+
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
+}
