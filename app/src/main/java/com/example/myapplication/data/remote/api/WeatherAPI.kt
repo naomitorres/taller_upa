@@ -6,7 +6,7 @@ import java.util.*
 interface WeatherAPI {
 
 
-    fun getWeather: Observable<Response<List<Board>>>
+  //  fun getWeather: Observable<Response<List<Board>>>
 
 
 
