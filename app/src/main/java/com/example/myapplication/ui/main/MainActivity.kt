@@ -16,13 +16,27 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    var router: Router? = null
+        @Inject set
+
+    var navigatorHolder: NavigatorHolder? = null
+        @Inject set
+    private var presenter: MainPresenter? = null
+    private val navigator = SupportAppNavigator(this,supportFragmentManager, R.id.container)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        loadInitialFragment()
+
+    }
 
 
+    fun loadInitialFragment() {
+        presenter?.loadInitialFragment()
     }
 
 
