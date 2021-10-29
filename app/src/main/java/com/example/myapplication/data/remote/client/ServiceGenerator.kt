@@ -1,4 +1,5 @@
 package com.example.myapplication.data.remote.client
+import android.content.Context
 import com.example.myapplication.data.constants
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -14,29 +15,41 @@ object ServiceGenerator {
 
     private val builder = Retrofit.Builder()
         .addCallAdapterFactory(RxJavaCallAdapterFactory.createAsync())
-        .baseUrl("api.openweathermap.org/data/2.5/weather?zip="+constants.UserData.CITY_ID+","+constants.UserData.COUNTRY_CODE + "&appid=" + constants.API.API_KEY)
+        .baseUrl("http://api.openweathermap.org/data/2.5/")
         .addConverterFactory(
             GsonConverterFactory.create(GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd-'T'HH:mm:ssZZZ").create()) )
 
 
-    private val logging = HttpLoggingInterceptor()
-        .setLevel(HttpLoggingInterceptor.Level.BODY)
-
+    private val logging = run {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.apply {
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        }
+    }
 
     private var retrofit: Retrofit? = null
+    private var okHttpClient: OkHttpClient? = null
 
-    fun <S> createService(serviceClass: Class<S>): S {
-        val httpClient = OkHttpClient.Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(10, TimeUnit.SECONDS)
+    fun <T> createService(serviceClass: Class<T>, context: Context): T {
 
-        httpClient.addNetworkInterceptor(logging)
         if (retrofit == null) {
-            retrofit = builder.client(httpClient.build()).build()
+
+            if (okHttpClient == null) {
+
+                okHttpClient = OkHttpClient.Builder()
+                    .addNetworkInterceptor(logging)
+                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .writeTimeout(60, TimeUnit.SECONDS)
+                    .retryOnConnectionFailure(true)
+                    .build()
+            }
+            retrofit = builder.client(okHttpClient!!).build()
         }
+
         return retrofit!!.create(serviceClass)
     }
+
 
 
 }

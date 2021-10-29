@@ -9,4 +9,8 @@
 
     <string name="city_name">El Centro, CA></string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="error">Error</string>
+    <string name="unknown_error">Ha ocurrido un  error, intente de nuevo.</string>
+    <string name="no_internet">No hay conexión a Internet.</string>
+    <string name="accept">Aceptar</string>
 </resources>

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.google.android.material.snackbar.Snackbar
 
-class PrincipalFragment : Fragment() {
+class PrincipalFragment : Fragment(), PrincipalContract.View {
 
     private var currentView: View? = null
 
@@ -16,9 +16,16 @@ class PrincipalFragment : Fragment() {
             if (currentView != null) {
                 return currentView
             }else{
-                return inflater.inflate(R.layout.fragment_first, container, false)
+               currentView = inflater.inflate(R.layout.fragment_first, container, false)
+                return currentView
             }
         }
+
+
+
+    override fun showWeather(weather : String) {
+
     }
+}
 
 

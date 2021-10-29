@@ -4,17 +4,16 @@ interface MainContract {
 
     interface View{
 
+       fun showWeather(climate : String)
+
     }
 
 
     interface Presenter{
         fun loadInitialFragment()
 
-    }
-
-    interface Interactor{
-
+        fun getWeather()
 
     }
 
-}
+    }
