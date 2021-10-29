@@ -1,9 +1,12 @@
 package com.example.myapplication.data.remote.api
 
+import com.downloader.Response
+import java.util.*
+
 interface WeatherAPI {
 
-   // @GET("tableros")
-    //fun getAllTableros(): Observable<Response<List<Board>>>
+
+    fun getWeather: Observable<Response<List<Board>>>
 
 
 

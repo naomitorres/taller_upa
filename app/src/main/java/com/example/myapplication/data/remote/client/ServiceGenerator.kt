@@ -1,4 +1,5 @@
 package com.example.myapplication.data.remote.client
+import com.example.myapplication.data.constants
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,12 +11,13 @@ import java.util.concurrent.TimeUnit
 
 object ServiceGenerator {
 
-    private var BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=" // IP Local
 
     private val builder = Retrofit.Builder()
         .addCallAdapterFactory(RxJavaCallAdapterFactory.createAsync())
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd-'T'HH:mm:ssZZZ").create()))
+        .baseUrl("api.openweathermap.org/data/2.5/weather?zip="+constants.UserData.CITY_ID+","+constants.UserData.COUNTRY_CODE + "&appid=" + constants.API.API_KEY)
+        .addConverterFactory(
+            GsonConverterFactory.create(GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd-'T'HH:mm:ssZZZ").create()) )
+
 
     private val logging = HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.BODY)

@@ -9,16 +9,17 @@ object constants {
         const val EMAIL = "email"
         const val PHONE = "phone"
         const val NAME = "name"
+        const val CITY_ID = "92243"
+        const val COUNTRY_CODE = "us"
     }
 
     object API{
 
-        const val API_TOKEN = "api_token"
-        //        const val API_URL = "http://144.126.218.176:8080/tibu/" //Servidor de producción
-///const val API_URL = "http://192.168.0.23:8090/" //Pruebas locales
-//        const val API_URL = "http://96eaf4b04dcc.ngrok.io/"
-        const val API_URL = "http://143.202.78.12:8858/tibu/" //Servidor de pruebas
-        //     const val API_URL = "https://admin.tibuapp.com/tibu/" //Dominio de produccion
+        const val API_KEY = "30abf562d9555a742c6a5f7a9ca94295"
+        //        const val API_URL = "" //Servidor de producción
+        //const val API_URL = "" //Pruebas locales
+        const val API_URL = "api.openweathermap.org/data/2.5/weather?q=" //Servidor de pruebas
+        //     const val API_URL = "/" //Dominio de produccion
         const val API_VERSION = "v1.0.0"
     }
 
